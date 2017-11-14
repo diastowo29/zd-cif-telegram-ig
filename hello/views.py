@@ -23,7 +23,6 @@ tasks = [
 
 # Create your views here.
 def index(request):
-	print(request)
     return JsonResponse({'tasks':tasks})
     # return render(request, 'index.html')
 
