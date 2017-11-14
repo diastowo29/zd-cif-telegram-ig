@@ -8,7 +8,7 @@ django = "*"
 gunicorn = "*"
 psycopg2 = "*"
 whitenoise = "*"
-telethon = "*"
+telethon = {git="https://github.com/LonamiWebs/Telethon.git"}
 
 [requires]
 python_version = "3.6"
