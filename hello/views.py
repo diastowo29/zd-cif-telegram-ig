@@ -22,7 +22,7 @@ tasks = [
 # Create your views here.
 def index(request):
     # return HttpResponse('Hello from Python!')
-    return jsonify({'tasks': tasks})
+    return tasks;
     # return render(request, 'index.html')
 
 
