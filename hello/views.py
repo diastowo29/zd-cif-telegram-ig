@@ -21,8 +21,8 @@ tasks = [
 
 # Create your views here.
 def index(request):
-    # return HttpResponse('Hello from Python!')
-    return tasks;
+    return HttpResponse(tasks)
+    # return tasks;
     # return render(request, 'index.html')
 
 
