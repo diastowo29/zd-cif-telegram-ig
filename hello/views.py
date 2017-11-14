@@ -1,9 +1,9 @@
+from telethon import TelegramClient
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 
 from .models import Greeting
-from telethon import TelegramClient
 
 tasks = [
     {
