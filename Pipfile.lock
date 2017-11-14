@@ -31,9 +31,6 @@
         },
         "whitenoise": {
             "version": "==3.3.0"
-        },
-        "telethon": {
-            "version": "*"
         }
     },
     "develop": {}
