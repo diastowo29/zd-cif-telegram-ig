@@ -23,10 +23,7 @@ tasks = [
 
 # Create your views here.
 def index(request):
-	if request.method == 'GET' :
-		print('GET')
-	else:
-		print('NOT GET')
+	print(request)
     return JsonResponse({'tasks':tasks})
     # return render(request, 'index.html')
 
