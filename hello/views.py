@@ -3,8 +3,7 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 
 from .models import Greeting
-import json
-# from flask import jsonify
+from telethon import TelegramClient
 
 tasks = [
     {
