@@ -33,7 +33,7 @@
             "version": "==3.3.0"
         },
         "telethon": {
-            "version": ""
+            "version": "==1"
         }
     },
     "develop": {}
