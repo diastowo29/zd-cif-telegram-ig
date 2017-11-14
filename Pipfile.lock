@@ -32,7 +32,7 @@
         "whitenoise": {
             "version": "==3.3.0"
         },
-        "telethon":{
+        "telethon": {
             "version": ""
         }
     },
