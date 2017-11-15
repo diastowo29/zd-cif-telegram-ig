@@ -65,6 +65,7 @@ def send_metadata(request):
 
 def call_api (urls):
 	# url = 'https://treesdemo1.zendesk.com/zendesk/channels/integration_service_instances/editor_finalizer'
+	print('make request to ', urls)
 	url = urls
 	data = '''{
 	  "metadata": {
@@ -75,6 +76,7 @@ def call_api (urls):
 	  "name": "Telegram Integeration",
 	}'''
 	response = requests.post(url, data=data)
+	print(response)
 	if response.status_code == 200:
 		print('call success')
 	else:
