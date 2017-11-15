@@ -17,6 +17,7 @@ def admin(request):
 	else:
 		print(request.method, ' CALL')
 
+	print('showing admin.html')
 	return render(request, 'admin.html')
 
 def pull(request):
