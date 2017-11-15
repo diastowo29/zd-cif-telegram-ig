@@ -76,7 +76,7 @@ def call_api (urls):
 	  "name": "Telegram Integeration",
 	}'''
 	response = requests.post(url, data=data)
-	print(response.json())
+	print(response.text)
 	if response.status_code == 200:
 		print('call success')
 	else:
