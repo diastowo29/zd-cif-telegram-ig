@@ -79,4 +79,4 @@ def call_api (url):
 		print('call success')
 	else:
 		print('call failed')
-	return render(request, 'admin.html')
+	# return render(request, 'admin.html')
