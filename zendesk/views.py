@@ -13,6 +13,7 @@ def admin(request):
 		print('POST CALL')
 		global return_url
 		return_url = request.POST.get("return_url", "")
+		print(return_url)
 		# return_url = 'return_url'
 	else:
 		print(request.method, ' CALL')
