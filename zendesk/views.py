@@ -11,9 +11,9 @@ return_url = ''
 def admin(request):
 	if (request.method == 'POST'):
 		print('POST CALL')
-		# return_url = request.POST.get("return_url", "")
 		global return_url
-		return_url = 'return_url'
+		return_url = request.POST.get("return_url", "")
+		# return_url = 'return_url'
 	else:
 		print(request.method, ' CALL')
 
