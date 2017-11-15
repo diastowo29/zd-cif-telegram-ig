@@ -63,9 +63,9 @@ def send_metadata(request):
 		print('not post')
 	# return render(request, 'admin.html')
 
-def call_api (url):
+def call_api (urls):
 	# url = 'https://treesdemo1.zendesk.com/zendesk/channels/integration_service_instances/editor_finalizer'
-	url = url
+	url = urls
 	data = '''{
 	  "metadata": {
 	    "api_id": "new_api_id",
