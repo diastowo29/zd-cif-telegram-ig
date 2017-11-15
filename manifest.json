@@ -1,0 +1,12 @@
+{
+  "name": "Telegram Integration",
+  "id": "zendesk-internal-telegram-integration",
+  "author":  "Diastowo Faryduana",
+  "version": "v1",
+  "urls": {
+    "admin_ui": "https://omniwear.com/integrations/zendsesk/telegram/admin_ui",
+    "pull_url": "https://omniwear.com/integrations/zendsesk/telegram/pull",
+    "channelback_url": "https://omniwear.com/integrations/zendsesk/telegram/channelback",
+    "clickthrough_url": "https://omniwear.com/integrations/zendsesk/telegram/clickthrough"
+  }
+}
