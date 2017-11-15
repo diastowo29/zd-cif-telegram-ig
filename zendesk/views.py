@@ -19,10 +19,15 @@ def admin(request):
 		print(request.method, ' CALL')
 
 	print('showing admin.html')
+	call_api('https://treesdemo1.zendesk.com/zendesk/channels/integration_service_instances/editor_finalizer')
 	return render(request, 'admin.html')
 
 def pull(request):
 	print('pull');
+	if request.method == 'POST':
+		print('POST PULL')
+	else:
+		print('NOT POST PULL')
 	return render(request, 'admin.html')
 
 def channelback(request):
@@ -59,6 +64,7 @@ def send_metadata(request):
 	# return render(request, 'admin.html')
 
 def call_api (url):
+	# url = 'https://treesdemo1.zendesk.com/zendesk/channels/integration_service_instances/editor_finalizer'
 	url = url
 	data = '''{
 	  "metadata": {
@@ -73,5 +79,4 @@ def call_api (url):
 		print('call success')
 	else:
 		print('call failed')
-
 	return render(request, 'admin.html')
