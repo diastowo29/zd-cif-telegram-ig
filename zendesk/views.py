@@ -50,6 +50,7 @@ def manifest(request):
 	return JsonResponse(tasks)
 
 @csrf_exempt
+@xframe_options_exempt
 def send_metadata(request):
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
