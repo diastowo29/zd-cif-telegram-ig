@@ -10,14 +10,14 @@ from .form import MetaContactForm
 
 import requests
 
-return_url = 'abc'
+return_url = ''
 @csrf_exempt
 @xframe_options_exempt
 def admin(request):
 	if request.method == 'POST':
 		global return_url
 		return_url = request.POST.get['return_url']
-		
+
 	form = ContactForm()
 	return render(request, 'admin.html', {'form': form})
 
