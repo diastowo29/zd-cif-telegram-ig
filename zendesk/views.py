@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext
+from django.views.decorators.clickjacking import xframe_options_exempt
 import requests
 
 return_url = ''
