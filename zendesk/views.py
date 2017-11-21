@@ -8,6 +8,7 @@ import requests
 
 return_url = ''
 @csrf_exempt
+@xframe_options_exempt
 def admin(request):
 	# if (request.method == 'POST'):
 	# 	print('POST CALL')
