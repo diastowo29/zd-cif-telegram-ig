@@ -17,6 +17,7 @@ def admin(request):
 	# 	# return_url = 'return_url'
 	# else:
 	# 	print(request.method, ' CALL')
+	print('testing post');
 
 	return render(request, 'admin.html')
 
