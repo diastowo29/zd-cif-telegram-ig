@@ -16,10 +16,10 @@ urlpatterns = [
     url(r'^ticket/post/$', hello.views.post, name='url_parameter_post'),
 
     # ZENDESK
-    url(r'^zendesk/telegram/admin_ui/$', zendesk.views.admin, name='cif_admin_ui'),
-    url(r'^zendesk/telegram/pull/$', zendesk.views.pull, name='cif_pull'),
-    url(r'^zendesk/telegram/channelback/$', zendesk.views.channelback, name='cif_channelback'),
-    url(r'^zendesk/telegram/clickthrough/$', zendesk.views.clickthrough, name='cif_clickthrough'),
-    url(r'^zendesk/telegram/manifest/$', zendesk.views.manifest, name='cif_manifest'),
+    url(r'^zendesk/telegram/admin_ui$', zendesk.views.admin, name='cif_admin_ui'),
+    url(r'^zendesk/telegram/pull$', zendesk.views.pull, name='cif_pull'),
+    url(r'^zendesk/telegram/channelback$', zendesk.views.channelback, name='cif_channelback'),
+    url(r'^zendesk/telegram/clickthrough$', zendesk.views.clickthrough, name='cif_clickthrough'),
+    url(r'^zendesk/telegram/manifest$', zendesk.views.manifest, name='cif_manifest'),
     url(r'^zendesk/telegram/admin_ui/send_metadata$', zendesk.views.send_metadata, name='cif_send_metadata'),
 ]
