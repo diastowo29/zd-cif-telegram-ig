@@ -9,17 +9,15 @@ import requests
 return_url = ''
 @csrf_exempt
 def admin(request):
-	if (request.method == 'POST'):
-		print('POST CALL')
-		global return_url
-		return_url = request.POST.get("return_url", "")
-		print(return_url)
-		# return_url = 'return_url'
-	else:
-		print(request.method, ' CALL')
+	# if (request.method == 'POST'):
+	# 	print('POST CALL')
+	# 	global return_url
+	# 	return_url = request.POST.get("return_url", "")
+	# 	print(return_url)
+	# 	# return_url = 'return_url'
+	# else:
+	# 	print(request.method, ' CALL')
 
-	print('showing admin.html')
-	call_api('https://treesdemo1.zendesk.com/zendesk/channels/integration_service_instances/editor_finalizer')
 	return render(request, 'admin.html')
 
 def pull(request):
