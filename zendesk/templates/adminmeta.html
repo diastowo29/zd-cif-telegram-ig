@@ -8,8 +8,8 @@
 <body>
 	<div class="container">
 	  <h2>Telegram Integeration Admin</h2>
-	  <p>Please input your credentials..</p>
-	  <form action="send_metadata" method="POST">
+	  <p>These followings data will be sent to Zendesk, please click 'Submit' to send..</p>
+	  <form th:action="{{return_url}}" method="POST">
 	    <div class="form-group">
 	      <!-- <label for="your_name">Api id:</label>
 	      <input type="text" class="form-control" id="your_name">

@@ -5,23 +5,17 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext
 from django.views.decorators.clickjacking import xframe_options_exempt
+from .form import ContactForm
+from .form import MetaContactForm
+
 import requests
 
-return_url = ''
+return_url = 'abc'
 @csrf_exempt
 @xframe_options_exempt
 def admin(request):
-	# if (request.method == 'POST'):
-	# 	print('POST CALL')
-	# 	global return_url
-	# 	return_url = request.POST.get("return_url", "")
-	# 	print(return_url)
-	# 	# return_url = 'return_url'
-	# else:
-	# 	print(request.method, ' CALL')
-	print('testing post')
-	print(request)
-	return render(request, 'admin.html')
+	form = ContactForm()
+	return render(request, 'admin.html', {'form': form})
 
 def pull(request):
 	print('pull');
@@ -58,11 +52,17 @@ def manifest(request):
 @csrf_exempt
 def send_metadata(request):
 	if request.method == 'POST':
-		name = request.POST.get('your_name', '')
-		call_api(return_url)
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			print('valid')
+			newForm = MetaContactForm()
+			newForm.fields['name'].initial = form.cleaned_data['name']
+			newForm.fields['metadata'].initial = '{\"api_id\":\"', form.cleaned_data['api_id'], '\", \"api_has\": \"', form.cleaned_data['api_hash'], '\", \"phone_number\": \"', form.cleaned_data['api_hash'], '\"}'
+		else:
+			print('not valid')
 	else:
 		print('not post')
-	# return render(request, 'admin.html')
+	return render(request, 'adminmeta.html', {'form': newForm, 'return_url': return_url})
 
 def call_api (urls):
 	# url = 'https://treesdemo1.zendesk.com/zendesk/channels/integration_service_instances/editor_finalizer'
