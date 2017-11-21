@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^zendesk/telegram/channelback$', zendesk.views.channelback, name='cif_channelback'),
     url(r'^zendesk/telegram/clickthrough$', zendesk.views.clickthrough, name='cif_clickthrough'),
     url(r'^zendesk/telegram/manifest/$', zendesk.views.manifest, name='cif_manifest'),
-    url(r'^zendesk/telegram/send_metadata$', zendesk.views.send_metadata, name='cif_send_metadata'),
+    url(r'^zendesk/telegram/send_metadata$', zendesk.metadataviews.send_metadata, name='cif_send_metadata'),
 ]
