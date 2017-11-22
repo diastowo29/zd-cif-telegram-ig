@@ -51,9 +51,9 @@ def manifest(request):
 	        'version': 'v1.0',
 	        'urls': {
 	        	'admin_ui':'https://pure-crag-61212.herokuapp.com/zendesk/telegram/admin_ui',
-	        	'pull': 'https://pure-crag-61212.herokuapp.com/zendesk/telegram/pull',
-	        	'channelback': 'https://pure-crag-61212.herokuapp.com/zendesk/telegram/channelback',
-	        	'clickthrough': 'https://pure-crag-61212.herokuapp.com/zendesk/telegram/clickthrough'
+	        	'pull_url': 'https://pure-crag-61212.herokuapp.com/zendesk/telegram/pull',
+	        	'channelback_url': 'https://pure-crag-61212.herokuapp.com/zendesk/telegram/channelback',
+	        	'clickthrough_url': 'https://pure-crag-61212.herokuapp.com/zendesk/telegram/clickthrough'
 	        }
 	    }
 	return JsonResponse(tasks)
