@@ -67,7 +67,7 @@ def send_metadata(request):
 		if form.is_valid():
 			print('valid')
 			newForm.fields['name'].initial = form.cleaned_data['name']
-			newForm.fields['metadata'].initial = '{\"api_id\":\"', form.cleaned_data['api_id'], '\", \"api_has\": \"', form.cleaned_data['api_hash'], '\", \"phone_number\": \"', form.cleaned_data['api_hash'], '\"}'
+			newForm.fields['metadata'].initial = '{"token":"another token"}'
 			newForm.fields['return_url'].initial = return_url
 		else:
 			print('not valid')
