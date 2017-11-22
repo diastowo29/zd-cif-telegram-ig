@@ -19,16 +19,18 @@ def admin(request):
 		global return_url
 		return_url = request.POST.get('return_url', '')
 
-	# return_url = 'testing/'
 	form = ContactForm()
 	return render(request, 'admin.html', {'form': form})
 
 def pull(request):
 	print('pull');
+	metadata = '';
 	if request.method == 'POST':
 		print('POST PULL')
+		metadata = request.POST.get('metadata', '')
 	else:
 		print('NOT POST PULL')
+	print(metadata);
 	return render(request, 'admin.html')
 
 def channelback(request):
