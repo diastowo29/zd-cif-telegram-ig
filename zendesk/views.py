@@ -23,6 +23,7 @@ def admin(request):
 	form = ContactForm()
 	return render(request, 'admin.html', {'form': form})
 
+@csrf_exempt
 def pull(request):
 	print('pull');
 	metadata = '';
@@ -32,6 +33,7 @@ def pull(request):
 	else:
 		print('NOT POST PULL')
 	print(metadata);
+
 	return JsonResponse({'external_resources':tasks})
 
 def channelback(request):
