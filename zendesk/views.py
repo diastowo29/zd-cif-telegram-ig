@@ -11,6 +11,7 @@ from .form import MetaContactForm
 import requests
 
 return_url = ''
+tasks = [];
 
 @csrf_exempt
 @xframe_options_exempt
@@ -31,7 +32,7 @@ def pull(request):
 	else:
 		print('NOT POST PULL')
 	print(metadata);
-	return render(request, 'admin.html')
+	return JsonResponse({'external_resources':tasks})
 
 def channelback(request):
 	print('channelback');
