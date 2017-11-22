@@ -5,6 +5,7 @@ admin.autodiscover()
 
 import hello.views
 import zendesk.views
+import zendesk.metadataviews
 
 urlpatterns = [
 	# TESTING
