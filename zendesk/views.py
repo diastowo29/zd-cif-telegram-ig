@@ -19,7 +19,7 @@ def admin(request):
 		global return_url
 		return_url = request.POST.get('return_url', '')
 
-	return_url = 'testing/'
+	# return_url = 'testing/'
 	form = ContactForm()
 	return render(request, 'admin.html', {'form': form})
 
