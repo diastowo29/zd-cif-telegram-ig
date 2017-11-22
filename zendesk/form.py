@@ -7,7 +7,7 @@ class ContactForm(forms.Form):
     phone_number = forms.CharField(label='Phone Number', max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}))
 
 class MetaContactForm(forms.Form):
-    name = forms.CharField(label='Integeration Name', max_length=100, widget=forms.TextInput(attrs={'readonly':'readonly', 'class': 'form-control'}))
+    name = forms.CharField(label='', max_length=100, widget=forms.TextInput(attrs={'readonly':'readonly', 'class': 'form-control'}))
     metadata = forms.CharField(label = '', max_length=100, widget=forms.TextInput(attrs={'readonly':'readonly', 'hidden': 'true'}))
     return_urls = forms.CharField(label = '', max_length=100, widget=forms.TextInput(attrs={'readonly':'readonly', 'hidden': 'true'}))
     # api_id = forms.CharField(label='Api ID', max_length=100, widget=forms.TextInput(attrs={'readonly':'readonly'}))
