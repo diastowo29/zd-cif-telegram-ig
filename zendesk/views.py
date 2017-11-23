@@ -9,9 +9,10 @@ from .form import ContactForm
 from .form import MetaContactForm
 
 import requests
+import json
 
 return_url = ''
-tasks = [];
+ext_resource = [];
 
 @csrf_exempt
 @xframe_options_exempt
@@ -32,9 +33,8 @@ def pull(request):
 		metadata = request.POST.get('metadata', '')
 	else:
 		print('NOT POST PULL')
-	print(metadata);
-
-	return JsonResponse({'external_resources':tasks})
+	metaJson = json.loads(metadata)
+	return JsonResponse({'external_resources':ext_resource})
 
 def channelback(request):
 	print('channelback');
@@ -69,7 +69,7 @@ def send_metadata(request):
 		if form.is_valid():
 			print('valid')
 			newForm.fields['name'].initial = form.cleaned_data['name']
-			newForm.fields['metadata'].initial = '{"api_id": "' + form.cleaned_data['api_id'] + '", "api_hash": "' + form.cleaned_data['api_hash'] + '", "phone_number": "' + form.cleaned_data['phone_number'] + '"}'
+			newForm.fields['metadata'].initial = '{"api_id": "' + form.cleaned_data['api_id'] + '", "api_hash": "' + form.cleaned_data['api_hash'] + '", "phone_number": "' + form.cleaned_data['phone_number'] + '", "username": "' + form.cleaned_data['username'] + '"}'
 			newForm.fields['return_url'].initial = return_url
 		else:
 			print('not valid')
