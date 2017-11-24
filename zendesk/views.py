@@ -108,6 +108,7 @@ def pull(request):
 				print('not user')
 		else:
 			print('bot chat')
+	print({'external_resources':ext_resource, 'state': state})
 	return JsonResponse({'external_resources':ext_resource, 'state': state})
 
 def channelback(request):
