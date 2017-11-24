@@ -31,7 +31,7 @@ ext_resource = {
       "author": {
         "external_id": "a2466",
         "name":        "Amy",
-        "image_url":   "https://scontent.cdninstagram.com/hphotos-xap1/t51.2885-19/s150x150/12424615_209564492716268_42714239_a.jpg",
+        "image_url":   "https://c.tadst.com/gfx/750w/doomsday-rule.jpg?1",
         "locale" :     "de"
       },
       "display_info": [{
@@ -48,7 +48,7 @@ ext_resource = {
       "author": {
         "external_id": "a2466",
         "name":        "Amy",
-        "image_url":   "https://scontent.cdninstagram.com/hphotos-xap1/t51.2885-19/s150x150/12424615_209564492716268_42714239_a.jpg",
+        "image_url":   "https://c.tadst.com/gfx/750w/doomsday-rule.jpg?1",
       },
       "display_info": [{
         "type": "omniwear.com/integrations/instagram/display/comment/v1",
