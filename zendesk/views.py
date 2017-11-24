@@ -21,7 +21,44 @@ import datetime
 return_url = ''
 state = {}
 states = {'state': state}
-ext_resource = []
+ext_resource = {
+  "external_resources":[
+    {
+      "external_id": "20151210083000-amy",
+      "message":     "Please help. My printer is on fire.",
+      "html_message": "Please help. <b>My printer is on fire.</b>",
+      "created_at":  "2015-09-08T22:48:09Z",
+      "author": {
+        "external_id": "a2466",
+        "name":        "Amy",
+        "image_url":   "https://scontent.cdninstagram.com/hphotos-xap1/t51.2885-19/s150x150/12424615_209564492716268_42714239_a.jpg",
+        "locale" :     "de"
+      },
+      "display_info": [{
+        "type": "omniwear.com/integrations/instagram/display/comment/v1",
+        "data": "{\"priority\": \"high\"}"
+      }],
+      "allow_channelback": 'false'
+    },
+    {
+      "external_id": "20151210083200-bob",
+      "message":     "There is no sand, blanket or fire extinguisher near by.",
+      "created_at":  "2015-09-08T22:48:12Z",
+      "parent_id":   "20151210083000-amy",
+      "author": {
+        "external_id": "a2466",
+        "name":        "Amy",
+        "image_url":   "https://scontent.cdninstagram.com/hphotos-xap1/t51.2885-19/s150x150/12424615_209564492716268_42714239_a.jpg",
+      },
+      "display_info": [{
+        "type": "omniwear.com/integrations/instagram/display/comment/v1",
+        "data": "{\"priority\": \"medium\"}"
+      }],
+      "allow_channelback": 'false'
+    }
+  ],
+  "state": "{\"last_message_id\":\"20151210083200-bob\"}"
+}
 api_id = 184365
 api_hash = '640727dc57738548a9cbc23e5d8d1bbe'
 phone = '+6281294059775'
@@ -57,57 +94,57 @@ def pull(request):
 	client = TelegramClient(username, api_id, api_hash)
 	client.connect()
 	dialogs, entities = client.get_dialogs()
-	for entity in entities:
-		if not entity.bot:
-			if "User(" in str(entity) :
-				result = client(GetHistoryRequest(
-					entity,
-					limit=100,
-					offset_date=None,
-					offset_id=0,
-					max_id=0,
-					min_id=0,
-					add_offset=0
-					));
-				msg = len(result.messages)-1
-				while msg > -1:
-					lastMsg = 0
-					if (lastMsg < result.messages[msg].id):
-						lastMsg = result.messages[msg].id
+	# for entity in entities:
+	# 	if not entity.bot:
+	# 		if "User(" in str(entity) :
+	# 			result = client(GetHistoryRequest(
+	# 				entity,
+	# 				limit=100,
+	# 				offset_date=None,
+	# 				offset_id=0,
+	# 				max_id=0,
+	# 				min_id=0,
+	# 				add_offset=0
+	# 				));
+	# 			msg = len(result.messages)-1
+	# 			while msg > -1:
+	# 				lastMsg = 0
+	# 				if (lastMsg < result.messages[msg].id):
+	# 					lastMsg = result.messages[msg].id
 
-					state = {'last_message_id':lastMsg}
-					user = client.get_entity(result.messages[msg].from_id)
-					message = '';
-					parent_id = 'tg-msg-' + str(entity.id)
-					if msg == len(result.messages)-1:
-						message = {
-					      'external_id': parent_id,
-					      'message': result.messages[msg].message,
-					      'created_at':result.messages[msg].date.isoformat("T") + "Z",
-					      'author': {
-					        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
-					        'name': user.first_name,
-					      },
-					      'allow_channelback': 'false'
-					    }
-					else:
-						message = {
-					      'external_id': 'tg-msg-' + str(result.messages[msg].id),
-					      'message': result.messages[msg].message,
-					      'created_at':result.messages[msg].date.isoformat("T") + "Z",
-					      'parent_id': parent_id,
-					      'author': {
-					        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
-					        'name': user.first_name,
-					      },
-					      'allow_channelback': 'false'
-					    }
-					ext_resource.extend([message])
-					msg-=1
-			else:
-				print('not user')
-		else:
-			print('bot chat')
+	# 				state = {'last_message_id':lastMsg}
+	# 				user = client.get_entity(result.messages[msg].from_id)
+	# 				message = '';
+	# 				parent_id = 'tg-msg-' + str(entity.id)
+	# 				if msg == len(result.messages)-1:
+	# 					message = {
+	# 				      'external_id': parent_id,
+	# 				      'message': result.messages[msg].message,
+	# 				      'created_at':result.messages[msg].date.isoformat("T") + "Z",
+	# 				      'author': {
+	# 				        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
+	# 				        'name': user.first_name,
+	# 				      },
+	# 				      'allow_channelback': 'false'
+	# 				    }
+	# 				else:
+	# 					message = {
+	# 				      'external_id': 'tg-msg-' + str(result.messages[msg].id),
+	# 				      'message': result.messages[msg].message,
+	# 				      'created_at':result.messages[msg].date.isoformat("T") + "Z",
+	# 				      'parent_id': parent_id,
+	# 				      'author': {
+	# 				        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
+	# 				        'name': user.first_name,
+	# 				      },
+	# 				      'allow_channelback': 'false'
+	# 				    }
+	# 				ext_resource.extend([message])
+	# 				msg-=1
+	# 		else:
+	# 			print('not user')
+	# 	else:
+	# 		print('bot chat')
 	# print({'external_resources':ext_resource, 'state': state})
 	return JsonResponse({'external_resources':ext_resource})
 
