@@ -142,9 +142,9 @@ def get_verify(request):
 			newForm.fields['metadata'].initial = '{"name":"' + form.cleaned_data['name'] + '", "api_id": "' + form.cleaned_data['api_id'] + '", "api_hash": "' + form.cleaned_data['api_hash'] + '", "phone_number": "' + form.cleaned_data['phone_number'] + '", "username": "' + form.cleaned_data['username'] + '"}'
 			newForm.fields['return_url'].initial = return_url
 
-			# client = TelegramClient(form.cleaned_data['username'], form.cleaned_data['api_id'], form.cleaned_data['api_hash'])
-			# client.connect()
-			# client.send_code_request(form.cleaned_data['phone_number']);
+			client = TelegramClient(form.cleaned_data['username'], form.cleaned_data['api_id'], form.cleaned_data['api_hash'])
+			client.connect()
+			client.send_code_request(form.cleaned_data['phone_number']);
 
 		else :
 			print('not valid')
@@ -174,12 +174,12 @@ def send_metadata(request):
 			phone_number = metadataJson['phone_number']
 			username = metadataJson['username']
 
-			# client = TelegramClient(username, api_id, api_hash)
-			# client.connect()
-			# if not client.is_user_authorized():
-			# 	client.sign_in(phone=phone_number);
-			# 	client.sign_in(code=verify)
-			# 	print('attemp to logins')
+			client = TelegramClient(username, api_id, api_hash)
+			client.connect()
+			if not client.is_user_authorized():
+				client.sign_in(phone=phone_number);
+				client.sign_in(code=verify)
+				print('attemp to logins')
 
 			sendMetaForm.fields['name'].initial = name
 			sendMetaForm.fields['metadata'].initial = metadata
