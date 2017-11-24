@@ -16,6 +16,7 @@ from .form import SendMetaForm
 
 import requests
 import json
+import datetime
 
 return_url = ''
 state = {}
@@ -82,6 +83,7 @@ def pull(request):
 						message = {
 					      'external_id': parent_id,
 					      'message': result.messages[msg].message,
+					      'created_at':result.messages[msg].date.isoformat("T") + "Z",
 					      'author': {
 					        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
 					        'name': user.first_name,
@@ -92,7 +94,8 @@ def pull(request):
 						message = {
 					      'external_id': 'tg-msg-' + str(entity.id),
 					      'message': result.messages[msg].message,
-					      "parent_id": parent_id,
+					      'created_at':result.messages[msg].date.isoformat("T") + "Z",
+					      'parent_id': parent_id,
 					      'author': {
 					        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
 					        'name': user.first_name,
