@@ -22,10 +22,10 @@ return_url = ''
 state = {}
 states = {'state': state}
 ext_resource = []
-# api_id = 184365
-# api_hash = '640727dc57738548a9cbc23e5d8d1bbe'
-# phone = '+6281294059775'
-# username = 'diastowo'
+api_id = 184365
+api_hash = '640727dc57738548a9cbc23e5d8d1bbe'
+phone = '+6281294059775'
+username = 'diastowo'
 
 @csrf_exempt
 @xframe_options_exempt
@@ -47,12 +47,12 @@ def pull(request):
 	else:
 		print('NOT POST PULL')
 
-	metaJson = json.loads(metadata)
+	# metaJson = json.loads(metadata)
 
-	api_id = metaJson['api_id']
-	api_hash = metaJson['api_hash']
-	phone = metaJson['phone_number']
-	username = metaJson['username']
+	# api_id = metaJson['api_id']
+	# api_hash = metaJson['api_hash']
+	# phone = metaJson['phone_number']
+	# username = metaJson['username']
 
 	client = TelegramClient(username, api_id, api_hash)
 	client.connect()
@@ -108,8 +108,8 @@ def pull(request):
 				print('not user')
 		else:
 			print('bot chat')
-	print({'external_resources':ext_resource, 'state': state})
-	return JsonResponse({'external_resources':ext_resource, 'state': state})
+	# print({'external_resources':ext_resource, 'state': state})
+	return JsonResponse({'external_resources':ext_resource})
 
 def channelback(request):
 	print('channelback');
