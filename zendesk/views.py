@@ -24,7 +24,7 @@ states = {'state': state}
 ext_resource = [
     {
       "external_id": "2015121asfsdf-amy",
-      "message":     "Please help. My printer is on fire.",
+      "message":     "Testing Telegram",
       "created_at":  "2017-09-08T22:48:09Z",
       "author": {
         "external_id": "a2466sdf",
@@ -34,7 +34,7 @@ ext_resource = [
     },
     {
       "external_id": "20151210sdfsdf-bob",
-      "message":     "There is no sand, blanket or fire extinguisher near by.",
+      "message":     "cuman testing nih",
       "created_at":  "2017-09-08T22:48:12Z",
       "parent_id":   "2015121asfsdf-amy",
       "author": {
