@@ -146,6 +146,8 @@ def pull(request):
 	# return JsonResponse({'external_resources':ext_resource, 'state':state})
 	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json;charset=UTF-8")
 
+@csrf_exempt
+@xframe_options_exempt
 def channelback(request):
 	print('channelback');
 	metadata = '';
