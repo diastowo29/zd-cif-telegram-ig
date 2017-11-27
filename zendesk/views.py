@@ -30,8 +30,6 @@ ext_resource = [
       "author": {
         "external_id": "a2466sdf",
         "name":        "Amy",
-        "image_url":   "https://c.tadst.com/gfx/750w/doomsday-rule.jpg?1",
-        "locale" :     "de"
       },
       "allow_channelback": 'false'
     },
@@ -43,7 +41,6 @@ ext_resource = [
       "author": {
         "external_id": "a2466sdf",
         "name":        "Amy",
-        "image_url":   "https://c.tadst.com/gfx/750w/doomsday-rule.jpg?1",
       },
       "allow_channelback": 'false'
     }
