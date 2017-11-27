@@ -67,9 +67,11 @@ def admin(request):
 def pull(request):
 	print('pull');
 	metadata = '';
+	newState = '';
 	if request.method == 'POST':
 		print('POST PULL')
 		metadata = request.POST.get('metadata', '')
+		newState = request.POST.get('state', '')
 	else:
 		print('NOT POST PULL')
 
@@ -80,6 +82,7 @@ def pull(request):
 	# phone = metaJson['phone_number']
 	# username = metaJson['username']
 	print(metadata)
+	print(newState)
 	client = TelegramClient(username, api_id, api_hash)
 	client.connect()
 	dialogs, entities = client.get_dialogs()
