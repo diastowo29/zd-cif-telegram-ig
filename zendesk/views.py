@@ -21,7 +21,6 @@ import datetime
 return_url = ''
 state = {}
 channelbackFlag = True
-states = {'state': state}
 ext_resource = []
 
 state = ''
@@ -81,7 +80,7 @@ def pull(request):
 					if (lastMsg < result.messages[msg].id):
 						lastMsg = result.messages[msg].id
 
-					state = '{\"last_message_id\":\"' + str(lastMsg) + '\"}'
+					state = "{\"last_message_id\":\"" + str(lastMsg) + "\"}"
 					user = client.get_entity(result.messages[msg].from_id)
 					message = '';
 					parent_id = 'tg-msg-' + str(entity.id)
@@ -116,11 +115,11 @@ def pull(request):
 			print('bot chat')
 	# print({'external_resources':ext_resource, 'state': state})
 
-	# response_data = {}
-	# response_data['external_resources'] = ext_resource
-	# response_data['state'] = state
-	return JsonResponse({'external_resources':ext_resource, 'state':state})
-	# return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json;charset=UTF-8")
+	response_data = {}
+	response_data['external_resources'] = ext_resource
+	response_data['state'] = state
+	# return JsonResponse({'external_resources':ext_resource, 'state':state})
+	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json;charset=UTF-8")
 
 def channelback(request):
 	print('channelback');
