@@ -23,12 +23,12 @@ state = {}
 states = {'state': state}
 ext_resource = [
     {
-      "external_id": "20151210083000-amy",
+      "external_id": "2015121asfsdf-amy",
       "message":     "Please help. My printer is on fire.",
       "html_message": "Please help. <b>My printer is on fire.</b>",
       "created_at":  "2015-09-08T22:48:09Z",
       "author": {
-        "external_id": "a2466",
+        "external_id": "a2466sdf",
         "name":        "Amy",
         "image_url":   "https://c.tadst.com/gfx/750w/doomsday-rule.jpg?1",
         "locale" :     "de"
@@ -40,12 +40,12 @@ ext_resource = [
       "allow_channelback": 'false'
     },
     {
-      "external_id": "20151210083200-bob",
+      "external_id": "20151210sdfsdf-bob",
       "message":     "There is no sand, blanket or fire extinguisher near by.",
       "created_at":  "2015-09-08T22:48:12Z",
-      "parent_id":   "20151210083000-amy",
+      "parent_id":   "2015121asfsdf-amy",
       "author": {
-        "external_id": "a2466",
+        "external_id": "a2466sdf",
         "name":        "Amy",
         "image_url":   "https://c.tadst.com/gfx/750w/doomsday-rule.jpg?1",
       },
@@ -56,10 +56,8 @@ ext_resource = [
       "allow_channelback": 'false'
     }
   ]
-  # ,
-  # "state": "{\"last_message_id\":\"20151210083200-bob\"}"
 
-state = "{\"last_message_id\":\"20151210083200-bob\"}"
+state = "{\"last_message_id\":\"20151210sdfsdf-bob\"}"
 
 api_id = 184365
 api_hash = '640727dc57738548a9cbc23e5d8d1bbe'
