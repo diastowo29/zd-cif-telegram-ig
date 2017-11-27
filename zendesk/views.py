@@ -81,11 +81,11 @@ def pull(request):
 	# api_hash = metaJson['api_hash']
 	# phone = metaJson['phone_number']
 	# username = metaJson['username']
-	print(metadata)
-	print(newState)
 	client = TelegramClient(username, api_id, api_hash)
 	client.connect()
 	dialogs, entities = client.get_dialogs()
+	print(metadata)
+	print(newState)
 	# for entity in entities:
 	# 	if not entity.bot:
 	# 		if "User(" in str(entity) :
