@@ -25,7 +25,7 @@ ext_resource = [
     {
       "external_id": "2015121asfsdf-amy",
       "message":     "Please help. My printer is on fire.",
-      "created_at":  "2015-09-08T22:48:09Z",
+      "created_at":  "2017-09-08T22:48:09Z",
       "author": {
         "external_id": "a2466sdf",
         "name":        "Amy",
@@ -35,7 +35,7 @@ ext_resource = [
     {
       "external_id": "20151210sdfsdf-bob",
       "message":     "There is no sand, blanket or fire extinguisher near by.",
-      "created_at":  "2015-09-08T22:48:12Z",
+      "created_at":  "2017-09-08T22:48:12Z",
       "parent_id":   "2015121asfsdf-amy",
       "author": {
         "external_id": "a2466sdf",
