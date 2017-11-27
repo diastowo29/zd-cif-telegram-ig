@@ -24,22 +24,22 @@ states = {'state': state}
 ext_resource = [
     {
       "external_id": "123456",
-      "message":     "Testing Telegram",
+      "message":     "Testing Telegram dias",
       "created_at":  "2017-09-08T22:48:09Z",
       "author": {
         "external_id": "678890",
-        "name":        "Amy",
+        "name":        "dias",
       },
       "allow_channelback": 'false'
     },
     {
       "external_id": "1234567",
-      "message":     "cuman testing nih",
+      "message":     "cuman testing nih dias",
       "created_at":  "2017-09-08T22:48:12Z",
       "parent_id":   "123456",
       "author": {
         "external_id": "678890",
-        "name":        "Amy",
+        "name":        "dias",
       },
       "allow_channelback": 'false'
     }
