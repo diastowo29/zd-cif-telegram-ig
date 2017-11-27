@@ -20,6 +20,7 @@ import datetime
 
 return_url = ''
 state = {}
+channelbackFlag = False
 states = {'state': state}
 ext_resource = [
     {
@@ -30,7 +31,7 @@ ext_resource = [
         "external_id": "678890",
         "name":        "dias",
       },
-      "allow_channelback": 'false'
+      "allow_channelback": channelbackFlag
     },
     {
       "external_id": "1234567",
@@ -41,7 +42,7 @@ ext_resource = [
         "external_id": "678890",
         "name":        "dias",
       },
-      "allow_channelback": 'false'
+      "allow_channelback": channelbackFlag
     }
   ]
 
