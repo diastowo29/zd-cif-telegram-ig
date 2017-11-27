@@ -67,7 +67,7 @@ def pull(request):
 			if "User(" in str(entity) :
 				result = client(GetHistoryRequest(
 					entity,
-					limit=100,
+					limit=20,
 					offset_date=None,
 					offset_id=0,
 					max_id=0,
