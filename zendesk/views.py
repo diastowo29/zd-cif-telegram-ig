@@ -63,6 +63,7 @@ def admin(request):
 	return render(request, 'admin.html', {'form': form})
 
 @csrf_exempt
+@xframe_options_exempt
 def pull(request):
 	print('pull');
 	metadata = '';
