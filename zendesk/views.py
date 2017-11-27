@@ -33,10 +33,6 @@ ext_resource = [
         "image_url":   "https://c.tadst.com/gfx/750w/doomsday-rule.jpg?1",
         "locale" :     "de"
       },
-      "display_info": [{
-        "type": "omniwear.com/integrations/instagram/display/comment/v1",
-        "data": "{\"priority\": \"high\"}"
-      }],
       "allow_channelback": 'false'
     },
     {
@@ -49,10 +45,6 @@ ext_resource = [
         "name":        "Amy",
         "image_url":   "https://c.tadst.com/gfx/750w/doomsday-rule.jpg?1",
       },
-      "display_info": [{
-        "type": "omniwear.com/integrations/instagram/display/comment/v1",
-        "data": "{\"priority\": \"medium\"}"
-      }],
       "allow_channelback": 'false'
     }
   ]
