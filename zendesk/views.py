@@ -21,8 +21,7 @@ import datetime
 return_url = ''
 state = {}
 states = {'state': state}
-ext_resource = {
-  "external_resources":[
+ext_resource = [
     {
       "external_id": "20151210083000-amy",
       "message":     "Please help. My printer is on fire.",
@@ -56,9 +55,12 @@ ext_resource = {
       }],
       "allow_channelback": 'false'
     }
-  ],
-  "state": "{\"last_message_id\":\"20151210083200-bob\"}"
-}
+  ]
+  # ,
+  # "state": "{\"last_message_id\":\"20151210083200-bob\"}"
+
+state = "{\"last_message_id\":\"20151210083200-bob\"}"
+
 api_id = 184365
 api_hash = '640727dc57738548a9cbc23e5d8d1bbe'
 phone = '+6281294059775'
@@ -146,7 +148,7 @@ def pull(request):
 	# 	else:
 	# 		print('bot chat')
 	# print({'external_resources':ext_resource, 'state': state})
-	return JsonResponse({'external_resources':ext_resource})
+	return JsonResponse({'external_resources':ext_resource, 'state':state})
 
 def channelback(request):
 	print('channelback');
