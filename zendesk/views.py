@@ -141,7 +141,7 @@ def pull(request):
 
 	response_data = {}
 	response_data['external_resources'] = ext_resource
-	# response_data['state'] = state
+	response_data['state'] = state
 	# print(len(ext_resource))
 	# return JsonResponse({'external_resources':ext_resource, 'state':state})
 	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json;charset=UTF-8")
@@ -153,14 +153,20 @@ def channelback(request):
 	metadata = '';
 	newState = '';
 	if request.method == 'POST':
-		print('POST PULL')
+		print('POST channelback')
 		metadata = request.POST.get('metadata', '')
 		newState = request.POST.get('state', '')
+		message = request.POST.get('message', '')
+		parentId = request.POST.get('parent_id', '')
+		recipientId = request.POST.get('recipient_id', '')
 	else:
-		print('NOT POST PULL')
+		print('NOT POST channelback')
 
 	print(metadata)
 	print(newState)
+	print(message)
+	print(parentId)
+	print(recipientId)
 	return render(request, 'admin.html')
 
 def clickthrough(request):
