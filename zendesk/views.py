@@ -98,7 +98,7 @@ def pull(request):
 					    }
 					else:
 						message = {
-					      'external_id': 'tg-msg-' + str(result.messages[msg].id),
+					      'external_id': 'tg-msg-'+ str(entity.id) + '-' + str(result.messages[msg].id),
 					      'message': result.messages[msg].message,
 					      'created_at':result.messages[msg].date.isoformat("T") + "Z",
 					      'parent_id': parent_id,
