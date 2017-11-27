@@ -140,7 +140,7 @@ def pull(request):
 	response_data['external_resources'] = ext_resource
 	response_data['state'] = state
 	# return JsonResponse({'external_resources':ext_resource, 'state':state})
-	return HttpResponse(json.dumps(response_data), content_type="application/json")
+	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json;charset=UTF-8")
 
 def channelback(request):
 	print('channelback');
