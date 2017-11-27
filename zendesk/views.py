@@ -134,7 +134,12 @@ def pull(request):
 	# 	else:
 	# 		print('bot chat')
 	# print({'external_resources':ext_resource, 'state': state})
-	return JsonResponse({'external_resources':ext_resource, 'state':state})
+
+	response_data = {}
+	response_data['external_resources'] = ext_resource
+	response_data['state'] = state
+	# return JsonResponse({'external_resources':ext_resource, 'state':state})
+	return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 def channelback(request):
 	print('channelback');
