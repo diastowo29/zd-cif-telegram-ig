@@ -25,7 +25,6 @@ ext_resource = [
     {
       "external_id": "2015121asfsdf-amy",
       "message":     "Please help. My printer is on fire.",
-      "html_message": "Please help. <b>My printer is on fire.</b>",
       "created_at":  "2015-09-08T22:48:09Z",
       "author": {
         "external_id": "a2466sdf",
