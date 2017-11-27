@@ -117,7 +117,8 @@ def pull(request):
 
 	response_data = {}
 	response_data['external_resources'] = ext_resource
-	response_data['state'] = state
+	# response_data['state'] = state
+	print(len(ext_resource))
 	# return JsonResponse({'external_resources':ext_resource, 'state':state})
 	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json;charset=UTF-8")
 
