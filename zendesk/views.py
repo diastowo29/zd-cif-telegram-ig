@@ -78,7 +78,7 @@ def pull(request):
 	# api_hash = metaJson['api_hash']
 	# phone = metaJson['phone_number']
 	# username = metaJson['username']
-
+	print(metadata)
 	client = TelegramClient(username, api_id, api_hash)
 	client.connect()
 	dialogs, entities = client.get_dialogs()
