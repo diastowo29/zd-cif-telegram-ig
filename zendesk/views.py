@@ -124,6 +124,17 @@ def pull(request):
 
 def channelback(request):
 	print('channelback');
+	metadata = '';
+	newState = '';
+	if request.method == 'POST':
+		print('POST PULL')
+		metadata = request.POST.get('metadata', '')
+		newState = request.POST.get('state', '')
+	else:
+		print('NOT POST PULL')
+
+	print(metadata)
+	print(newState)
 	return render(request, 'admin.html')
 
 def clickthrough(request):
