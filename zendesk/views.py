@@ -85,28 +85,30 @@ def pull(request):
 					message = '';
 					parent_id = 'tg-msg-' + str(entity.id)
 					if msg == len(result.messages)-1:
-						message = {
-					      'external_id': parent_id,
-					      'message': result.messages[msg].message,
-					      'created_at':result.messages[msg].date.isoformat("T") + "Z",
-					      'author': {
-					        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
-					        'name': user.first_name,
-					      },
-					      'allow_channelback': channelbackFlag
-					    }
+						if len(result.messages[msg].message) != 0:
+							message = {
+						      'external_id': parent_id,
+						      'message': result.messages[msg].message,
+						      'created_at':result.messages[msg].date.isoformat("T") + "Z",
+						      'author': {
+						        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
+						        'name': user.first_name,
+						      },
+						      'allow_channelback': channelbackFlag
+						    }
 					else:
-						message = {
-					      'external_id': 'tg-msg-'+ str(entity.id) + '-' + str(result.messages[msg].id),
-					      'message': result.messages[msg].message,
-					      'created_at':result.messages[msg].date.isoformat("T") + "Z",
-					      'parent_id': parent_id,
-					      'author': {
-					        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
-					        'name': user.first_name,
-					      },
-					      'allow_channelback': channelbackFlag
-					    }
+						if len(result.messages[msg].message) != 0: 
+							message = {
+						      'external_id': 'tg-msg-'+ str(entity.id) + '-' + str(result.messages[msg].id),
+						      'message': result.messages[msg].message,
+						      'created_at':result.messages[msg].date.isoformat("T") + "Z",
+						      'parent_id': parent_id,
+						      'author': {
+						        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
+						        'name': user.first_name,
+						      },
+						      'allow_channelback': channelbackFlag
+						    }
 					ext_resource.extend([message])
 					msg-=1
 			else:
@@ -118,7 +120,7 @@ def pull(request):
 	response_data = {}
 	response_data['external_resources'] = ext_resource
 	# response_data['state'] = state
-	print(len(ext_resource))
+	# print(len(ext_resource))
 	# return JsonResponse({'external_resources':ext_resource, 'state':state})
 	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json;charset=UTF-8")
 
