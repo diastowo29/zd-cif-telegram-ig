@@ -166,9 +166,9 @@ def channelback(request):
 
 	# print(metadata)
 	# print(newState)
-	# print(message)
-	# print(parentId)
-	# print(recipientId)
+	print(message)
+	print(parentId)
+	print(recipientId)
 	return render(request, 'admin.html')
 
 def clickthrough(request):
