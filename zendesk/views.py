@@ -23,29 +23,29 @@ state = {}
 states = {'state': state}
 ext_resource = [
     {
-      "external_id": "2015121asfsdf-amy",
+      "external_id": "123456",
       "message":     "Testing Telegram",
       "created_at":  "2017-09-08T22:48:09Z",
       "author": {
-        "external_id": "a2466sdf",
+        "external_id": "678890",
         "name":        "Amy",
       },
       "allow_channelback": 'false'
     },
     {
-      "external_id": "20151210sdfsdf-bob",
+      "external_id": "1234567",
       "message":     "cuman testing nih",
       "created_at":  "2017-09-08T22:48:12Z",
-      "parent_id":   "2015121asfsdf-amy",
+      "parent_id":   "123456",
       "author": {
-        "external_id": "a2466sdf",
+        "external_id": "678890",
         "name":        "Amy",
       },
       "allow_channelback": 'false'
     }
   ]
 
-state = "{\"last_message_id\":\"20151210sdfsdf-bob\"}"
+state = "{\"last_message_id\":\"1234567\"}"
 
 api_id = 184365
 api_hash = '640727dc57738548a9cbc23e5d8d1bbe'
