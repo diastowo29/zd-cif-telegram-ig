@@ -88,7 +88,7 @@ def pull(request):
 	for entity in entities:
 		if not entity.bot:
 			if "User(" in str(entity) :
-				if entity.first_name == 'Eldien@Trees':
+				if entity.first_name == 'Paul@Trees':
 					result = client(GetHistoryRequest(
 						entity,
 						limit=20,
