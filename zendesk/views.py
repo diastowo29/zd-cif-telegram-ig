@@ -48,6 +48,8 @@ ext_resource = []
 
 state = ''
 
+count = 0
+
 api_id = 184365
 api_hash = '640727dc57738548a9cbc23e5d8d1bbe'
 phone = '+6281294059775'
@@ -152,7 +154,8 @@ def pull(request):
 @csrf_exempt
 @xframe_options_exempt
 def channelback(request):
-	print('channelback');
+	count+=1
+	print('channelback', count);
 	return render(request, 'admin.html')
 	# metadata = ''
 	# newState = ''
