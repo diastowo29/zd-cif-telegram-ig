@@ -116,7 +116,7 @@ def pull(request):
 						      'created_at':result.messages[msg].date.isoformat("T") + "Z",
 						      'author': {
 						        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
-						        'name': user.first_name,
+						        'name': user.first_name.replace('@', '_'),
 						      },
 						      'allow_channelback': channelbackFlag
 						    }
@@ -129,7 +129,7 @@ def pull(request):
 						      'parent_id': parent_id,
 						      'author': {
 						        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
-						        'name': user.first_name,
+						        'name': user.first_name.replace('@', '_'),
 						      },
 						      'allow_channelback': channelbackFlag
 						    }
