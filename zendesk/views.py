@@ -153,8 +153,9 @@ def pull(request):
 @xframe_options_exempt
 def channelback(request):
 	print('channelback');
-	metadata = '';
-	newState = '';
+	metadata = ''
+	newState = ''
+	lastMessag = ''
 	if request.method == 'POST':
 		print('POST channelback')
 		metadata = request.POST.get('metadata', '')
@@ -162,15 +163,28 @@ def channelback(request):
 		message = request.POST.get('message', '')
 		parentId = request.POST.get('parent_id', '')
 		recipientId = request.POST.get('recipient_id', '')
+
+		parentSplit = parentId.split('-')
+		client = TelegramClient(username, api_id, api_hash)
+		client.connect()
+		dialogs, entities = client.get_dialogs()
+		for entity in entities:
+			if not entity.bot:
+				if "User(" in str(entity) :
+					if entity.id == int(parentSplit[2]):
+						peer = utils.get_input_user(entity)
+						sendMessage = client(SendMessageRequest(peer, message))
+						lastMessag = parentSplit[0] + '-' + parentSplit[1] + '-' + parentSplit[2] + '-' + str(sendMessage.id)
+
 	else:
 		print('NOT POST channelback')
 
-	# print(metadata)
-	# print(newState)
-	print(message)
-	print(parentId)
-	print(recipientId)
-	return render(request, 'admin.html')
+	response_data = {}
+	response_data['external_id'] = lastMessag
+	response_data['allow_channelback'] = True
+	# print(len(ext_resource))
+	# return JsonResponse({'external_resources':ext_resource, 'state':state})
+	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json;charset=UTF-8")
 
 def clickthrough(request):
 	print('clickthrough');
