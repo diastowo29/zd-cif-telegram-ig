@@ -154,8 +154,9 @@ def pull(request):
 @csrf_exempt
 @xframe_options_exempt
 def channelback(request):
+	global count
 	count+=1
-	print('channelback', count);
+	print('channelback' + str(count));
 	return render(request, 'admin.html')
 	# metadata = ''
 	# newState = ''
