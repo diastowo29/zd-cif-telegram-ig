@@ -139,6 +139,7 @@ def pull(request):
 				print('not user')
 		else:
 			print('bot chat')
+	client.disconnect()
 	# print({'external_resources':ext_resource, 'state': state})
 
 	response_data = {}
@@ -205,6 +206,7 @@ def get_verify(request):
 			client = TelegramClient(form.cleaned_data['username'], form.cleaned_data['api_id'], form.cleaned_data['api_hash'])
 			client.connect()
 			client.send_code_request(form.cleaned_data['phone_number']);
+			client.disconnect()
 
 		else :
 			print('not valid')
@@ -244,6 +246,7 @@ def send_metadata(request):
 			sendMetaForm.fields['name'].initial = name
 			sendMetaForm.fields['metadata'].initial = metadata
 			sendMetaForm.fields['return_url'].initial = newReturnUrl
+			client.disconnect()
 		else:
 			print('form not valid')
 			print(metaForm.errors)
