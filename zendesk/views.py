@@ -153,7 +153,7 @@ def pull(request):
 @xframe_options_exempt
 def channelback(request):
 	print('channelback');
-	return render(request, 'admin.html')
+	# return render(request, 'admin.html')
 	# metadata = ''
 	# newState = ''
 	# lastMessag = ''
@@ -180,12 +180,12 @@ def channelback(request):
 	# else:
 	# 	print('NOT POST channelback')
 
-	# response_data = {}
-	# response_data['external_id'] = lastMessag
-	# response_data['allow_channelback'] = True
+	response_data = {}
+	response_data['external_id'] = 'abcdef'
+	response_data['allow_channelback'] = True
 	# # print(len(ext_resource))
 	# # return JsonResponse({'external_resources':ext_resource, 'state':state})
-	# return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json;charset=UTF-8")
+	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json;charset=UTF-8")
 
 def clickthrough(request):
 	print('clickthrough');
