@@ -118,6 +118,7 @@ def pull(request):
 	response_data = {}
 	response_data['external_resources'] = ext_resource
 	response_data['state'] = state
+	global ext_resource
 	ext_resource = []
 	# print(len(ext_resource))
 	# return JsonResponse({'external_resources':ext_resource, 'state':state})
