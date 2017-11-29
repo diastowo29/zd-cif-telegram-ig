@@ -19,11 +19,9 @@ import json
 import datetime
 
 return_url = ''
-state = {}
 channelbackFlag = True
 ext_resource = []
 
-state = ''
 
 # api_id = 184365
 # api_hash = '640727dc57738548a9cbc23e5d8d1bbe'
@@ -43,7 +41,7 @@ def admin(request):
 @csrf_exempt
 @xframe_options_exempt
 def pull(request):
-
+	state = ''
 	del ext_resource[:]
 	print('pull');
 	metadata = '';
