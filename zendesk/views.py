@@ -25,10 +25,10 @@ ext_resource = []
 
 state = ''
 
-api_id = 184365
-api_hash = '640727dc57738548a9cbc23e5d8d1bbe'
-phone = '+6281294059775'
-username = 'diastowo'
+# api_id = 184365
+# api_hash = '640727dc57738548a9cbc23e5d8d1bbe'
+# phone = '+6281294059775'
+# username = 'diastowo'
 
 @csrf_exempt
 @xframe_options_exempt
@@ -56,12 +56,12 @@ def pull(request):
 		print('NOT POST PULL')
 	print(newState)
 
-	# metaJson = json.loads(metadata)
+	metaJson = json.loads(metadata)
 
-	# api_id = metaJson['api_id']
-	# api_hash = metaJson['api_hash']
-	# phone = metaJson['phone_number']
-	# username = metaJson['username']
+	api_id = metaJson['api_id']
+	api_hash = metaJson['api_hash']
+	phone = metaJson['phone_number']
+	username = metaJson['username']
 	client = TelegramClient(username, api_id, api_hash)
 	client.connect()
 	dialogs, entities = client.get_dialogs()
