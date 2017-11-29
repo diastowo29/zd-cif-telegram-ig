@@ -21,29 +21,6 @@ import datetime
 return_url = ''
 state = {}
 channelbackFlag = True
-# ext_resource = [
-#     {
-#       "external_id": "123456d",
-#       "message":     "Testing Telegram dias lagi",
-#       "created_at":  "2017-09-08T22:48:09Z",
-#       "author": {
-#         "external_id": "678890",
-#         "name":        "dias",
-#       },
-#       "allow_channelback": channelbackFlag
-#     },
-#     {
-#       "external_id": "1234567d",
-#       "message":     "cuman testing nih dias lagi",
-#       "created_at":  "2017-09-08T22:48:12Z",
-#       "parent_id":   "123456",
-#       "author": {
-#         "external_id": "678890",
-#         "name":        "dias",
-#       },
-#       "allow_channelback": channelbackFlag
-#     }
-#   ]
 ext_resource = []
 
 state = ''
