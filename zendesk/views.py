@@ -43,7 +43,7 @@ def admin(request):
 @csrf_exempt
 @xframe_options_exempt
 def pull(request):
-	
+
 	del ext_resource[:]
 	print('pull');
 	metadata = '';
@@ -63,6 +63,7 @@ def pull(request):
 	phone = metaJson['phone_number']
 	username = metaJson['username']
 	client = TelegramClient(username, api_id, api_hash)
+	print('pull with username: ' + username)
 	client.connect()
 	dialogs, entities = client.get_dialogs()
 	for entity in entities:
