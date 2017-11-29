@@ -25,10 +25,10 @@ ext_resource = []
 
 state = ''
 
-# api_id = 184365
-# api_hash = '640727dc57738548a9cbc23e5d8d1bbe'
-# phone = '+6281294059775'
-# username = 'diastowo'
+api_id = 184365
+api_hash = '640727dc57738548a9cbc23e5d8d1bbe'
+phone = '+6281294059775'
+username = 'diastowo'
 
 @csrf_exempt
 @xframe_options_exempt
@@ -43,6 +43,8 @@ def admin(request):
 @csrf_exempt
 @xframe_options_exempt
 def pull(request):
+	
+	del ext_resource[:]
 	print('pull');
 	metadata = '';
 	newState = '';
@@ -54,12 +56,12 @@ def pull(request):
 		print('NOT POST PULL')
 	print(newState)
 
-	metaJson = json.loads(metadata)
+	# metaJson = json.loads(metadata)
 
-	api_id = metaJson['api_id']
-	api_hash = metaJson['api_hash']
-	phone = metaJson['phone_number']
-	username = metaJson['username']
+	# api_id = metaJson['api_id']
+	# api_hash = metaJson['api_hash']
+	# phone = metaJson['phone_number']
+	# username = metaJson['username']
 	client = TelegramClient(username, api_id, api_hash)
 	client.connect()
 	dialogs, entities = client.get_dialogs()
@@ -118,8 +120,6 @@ def pull(request):
 	response_data = {}
 	response_data['external_resources'] = ext_resource
 	response_data['state'] = state
-	global ext_resource
-	ext_resource = []
 	# print(len(ext_resource))
 	# return JsonResponse({'external_resources':ext_resource, 'state':state})
 	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json;charset=UTF-8")
