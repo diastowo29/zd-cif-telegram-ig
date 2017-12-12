@@ -52,10 +52,14 @@ def pull(request):
 		newState = request.POST.get('state', '')
 	else:
 		print('NOT POST PULL')
-	print(newState)
 
+	stateJson = '';
+	stateLastMsg = 0;
+	if newState != '':
+		stateJson = json.loads(newState)
+		stateLastMsg = stateJson['last_message_id']
+	
 	metaJson = json.loads(metadata)
-
 	api_id = metaJson['api_id']
 	api_hash = metaJson['api_hash']
 	phone = metaJson['phone_number']
@@ -80,39 +84,40 @@ def pull(request):
 				msg = len(result.messages)-1
 				while msg > -1:
 					lastMsg = 0
-					if (lastMsg < result.messages[msg].id):
-						lastMsg = result.messages[msg].id
+					if result.messages[msg].id > int(stateLastMsg):
+						if lastMsg < result.messages[msg].id:
+							lastMsg = result.messages[msg].id
 
-					state = "{\"last_message_id\":\"" + str(lastMsg) + "\"}"
-					user = client.get_entity(result.messages[msg].from_id)
-					message = '';
-					parent_id = 'tg-msg-' + str(entity.id)
-					if msg == len(result.messages)-1:
-						if len(result.messages[msg].message) != 0:
-							message = {
-						      'external_id': parent_id,
-						      'message': result.messages[msg].message,
-						      'created_at':result.messages[msg].date.isoformat("T") + "Z",
-						      'author': {
-						        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
-						        'name': user.first_name,
-						      },
-						      'allow_channelback': channelbackFlag
-						    }
-					else:
-						if len(result.messages[msg].message) != 0: 
-							message = {
-						      'external_id': 'tg-msg-'+ str(entity.id) + '-' + str(result.messages[msg].id),
-						      'message': result.messages[msg].message,
-						      'created_at':result.messages[msg].date.isoformat("T") + "Z",
-						      'parent_id': parent_id,
-						      'author': {
-						        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
-						        'name': user.first_name,
-						      },
-						      'allow_channelback': channelbackFlag
-						    }
-					ext_resource.extend([message])
+						state = "{\"last_message_id\":\"" + str(lastMsg) + "\"}"
+						user = client.get_entity(result.messages[msg].from_id)
+						message = '';
+						parent_id = 'tg-msg-' + str(entity.id)
+						if msg == len(result.messages)-1:
+							if len(result.messages[msg].message) != 0:
+								message = {
+							      'external_id': parent_id,
+							      'message': result.messages[msg].message,
+							      'created_at':result.messages[msg].date.isoformat("T") + "Z",
+							      'author': {
+							        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
+							        'name': user.first_name,
+							      },
+							      'allow_channelback': channelbackFlag
+							    }
+						else:
+							if len(result.messages[msg].message) != 0: 
+								message = {
+							      'external_id': 'tg-msg-'+ str(entity.id) + '-' + str(result.messages[msg].id),
+							      'message': result.messages[msg].message,
+							      'created_at':result.messages[msg].date.isoformat("T") + "Z",
+							      'parent_id': parent_id,
+							      'author': {
+							        'external_id': 'tg-acc-' + str(result.messages[msg].from_id),
+							        'name': user.first_name,
+							      },
+							      'allow_channelback': channelbackFlag
+							    }
+						ext_resource.extend([message])
 					msg-=1
 	client.disconnect()
 
@@ -130,7 +135,7 @@ def channelback(request):
 	# return render(request, 'admin.html')
 	metadata = ''
 	newState = ''
-	lastMessag = ''
+	chatId = ''
 	if request.method == 'POST':
 		print('POST channelback')
 		metadata = request.POST.get('metadata', '')
@@ -156,13 +161,13 @@ def channelback(request):
 					if entity.id == int(parentSplit[2]):
 						peer = utils.get_input_user(entity)
 						sendMessage = client(SendMessageRequest(peer, message))
-						lastMessag = parentSplit[0] + '-' + parentSplit[1] + '-' + parentSplit[2] + '-' + str(sendMessage.id)
+						chatId = parentSplit[0] + '-' + parentSplit[1] + '-' + parentSplit[2] + '-' + str(sendMessage.id)
 		client.disconnect()
 	else:
 		print('NOT POST channelback')
 
 	response_data = {}
-	response_data['external_id'] = lastMessag
+	response_data['external_id'] = chatId
 	response_data['allow_channelback'] = True
 	# # print(len(ext_resource))
 	# # return JsonResponse({'external_resources':ext_resource, 'state':state})

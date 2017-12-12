@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hello',
-    'zendesk'
+    'zendesk',
+    'ig'
 )
 
 MIDDLEWARE_CLASSES = (
