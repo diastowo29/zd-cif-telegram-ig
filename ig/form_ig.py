@@ -4,7 +4,6 @@ class ContactForm(forms.Form):
     name = forms.CharField(label='Integration Name', max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}))
     client_id = forms.CharField(label='Client ID', widget=forms.TextInput(attrs={'class':'form-control'}))
     client_secret = forms.CharField(label='Client Secret', widget=forms.TextInput(attrs={'class':'form-control'}))
-    # phone_number = forms.CharField(label='Phone Number', max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}))
     username = forms.CharField(label='Username', max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}))
 
 class MetaContactForm(forms.Form):

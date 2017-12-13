@@ -22,6 +22,9 @@ name = ''
 username = ''
 return_url = ''
 
+# my_redirect_url = 'http://localhost:5000/zendesk/instagram/auth'
+my_redirect_url = 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/auth'
+
 # my_client_id = '1267bd385de6433ab84d06d981e4c213'
 # my_client_secret = '6ac0461eccb14f99a0313ff3f846867b'
 # access_token = "530621889.1267bd3.a7551d9e5f0041e19dd7e9c3cc04a0ce" #@diastowoo
@@ -43,6 +46,7 @@ def admin(request):
 @csrf_exempt
 @xframe_options_exempt
 def doAuth(request):
+	# testing = ''
 	global username
 	global name
 	global my_client_id
@@ -55,7 +59,14 @@ def doAuth(request):
 			name = form.cleaned_data['name']
 			my_client_id = form.cleaned_data['client_id']
 			my_client_secret = form.cleaned_data['client_secret']
-	return redirect('https://api.instagram.com/oauth/authorize/?client_id=' + my_client_id + '&redirect_uri=http://localhost:5000/zendesk/instagram/auth&response_type=code')
+			# testing = {
+			# 	'name': name,
+			# 	'username': username,
+			# 	'client_id': my_client_id,
+			# 	'client_secret' : my_client_secret
+			# }
+	return redirect('https://api.instagram.com/oauth/authorize/?client_id=' + my_client_id + '&redirect_uri=' + my_redirect_url + '&response_type=code')
+	# return JsonResponse(testing)
 
 @csrf_exempt
 @xframe_options_exempt
@@ -65,7 +76,7 @@ def adminauth(request, code):
 			'client_id': my_client_id, 
 			'client_secret': my_client_secret, 
 			'grant_type': 'authorization_code', 
-			'redirect_uri': 'http://localhost:5000/zendesk/instagram/auth', 
+			'redirect_uri': my_redirect_url, 
 			'code': request.GET.get('code')
 			}
 	r = requests.post("https://api.instagram.com/oauth/access_token", data=parameter)
@@ -84,10 +95,10 @@ def manifest(request):
 	        'author': 'Diastowo Faryduana', 
 	        'version': 'v1.0',
 	        'urls': {
-	        	'admin_ui':'https://pure-crag-61212.herokuapp.com/zendesk/instagram/admin_ui',
-	        	'pull_url': 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/pull',
-	        	'channelback_url': 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/channelback',
-	        	'clickthrough_url': 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/clickthrough'
+	        	'admin_ui':'https://pure-crag-61212.herokuapp.com/zendesk/instagram/admin_ui/',
+	        	'pull_url': 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/pull/',
+	        	'channelback_url': 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/channelback/',
+	        	'clickthrough_url': 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/clickthrough/'
 	        }
 	    }
 	return JsonResponse(tasks)
