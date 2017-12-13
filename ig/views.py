@@ -86,7 +86,7 @@ def adminauth(request, code):
 	metaForm.fields['name'].initial = name
 	metaForm.fields['return_url'].initial = return_url
 
-	return render(request, 'sendmeta_ig.html', {'form': metaForm, 'return_url': 'testing'})
+	return render(request, 'sendmeta_ig.html', {'form': metaForm, 'return_url': return_url})
 
 def manifest(request):
 	tasks = {
