@@ -169,4 +169,9 @@ def channelback(request):
 @csrf_exempt
 @xframe_options_exempt
 def clickthrough(request):
+	if request.method == 'POST':
+		print('POST')
+	else:
+		print('GET')
+		print(request.GET.get('fromuid'))
 	return JsonResponse({})
