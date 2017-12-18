@@ -59,6 +59,8 @@ def doAuth(request):
 			# 	'client_id': my_client_id,
 			# 	'client_secret' : my_client_secret
 			# }
+		else:
+			print(form.errors)
 	return redirect('https://api.instagram.com/oauth/authorize/?client_id=' + my_client_id + '&redirect_uri=' + my_redirect_url + '&response_type=code')
 	# return JsonResponse(testing)
 
