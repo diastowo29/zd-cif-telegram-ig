@@ -25,11 +25,6 @@ return_url = ''
 # my_redirect_url = 'http://localhost:5000/zendesk/instagram/auth'
 my_redirect_url = 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/auth'
 
-# my_client_id = '1267bd385de6433ab84d06d981e4c213'
-# my_client_secret = '6ac0461eccb14f99a0313ff3f846867b'
-# access_token = "530621889.1267bd3.a7551d9e5f0041e19dd7e9c3cc04a0ce" #@diastowoo
-# access_token = "4134206752.7d1fc69.22ff7bc7d940493facc1866741c99b4b" #@divvapes_bogor
-
 my_client_id = 'e7571324f43d4de7a0a2ed23741c5dc9' #@trees_zd
 my_client_secret = 'de94bb10002343cf81aaddba094986dd' #@trees_zd
 access_token = '6681801146.935271d.0b8ba1e015024ec4b3e0759c8129abd6' #@trees_zd
@@ -52,7 +47,6 @@ def doAuth(request):
 	global my_client_id
 	global my_client_secret
 	if request.method == 'POST':
-		print('yes it is')
 		form = ContactForm(request.POST)
 		if form.is_valid():
 			username = form.cleaned_data['username']
