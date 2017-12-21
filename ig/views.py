@@ -172,4 +172,5 @@ def clickthrough(request):
 	else:
 		print('GET')
 		print(request.GET.get('fromuid'))
+		print('testing')
 	return JsonResponse({})
