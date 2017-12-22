@@ -28,7 +28,7 @@ urlpatterns = [
 
     # ZENDESK INSTAGRAM
     url(r'^zendesk/instagram/admin_ui/', ig.views.admin, name='cif_ig_admin_ui'),
-    url(r'^zendesk/instagram/auth(?P<code>\w{0,50})/$', ig.views.adminauth, name='cif_ig_auth_code'),
+    url(r'^zendesk/instagram/auth/', ig.views.adminauth, name='cif_ig_auth_code'),
     url(r'^zendesk/instagram/givetoken(?P<code>\w{0,50})/$', ig.views.givetoken, name='cif_ig_givetoken'),
     url(r'^zendesk/instagram/manifest/$', ig.views.manifest, name='cif_ig_manifest'),
     url(r'^zendesk/instagram/pull/', ig.views.pull, name='cif_ig_pull'),

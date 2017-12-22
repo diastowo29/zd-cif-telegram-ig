@@ -4,8 +4,6 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext
 from django.views.decorators.clickjacking import xframe_options_exempt
-from django.views.decorators.clickjacking import xframe_options_deny
-from django.views.decorators.clickjacking import xframe_options_sameorigin
 import requests
 import json
 from datetime import datetime
