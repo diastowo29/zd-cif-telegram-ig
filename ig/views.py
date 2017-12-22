@@ -71,7 +71,7 @@ def doAuth(request):
 
 @csrf_exempt
 @xframe_options_exempt
-def adminauth(request, code):
+def adminauth(request):
 	print('adminauth')
 	global access_token
 	code = ''
@@ -87,8 +87,8 @@ def adminauth(request, code):
 			'code': code
 			}
 	r = requests.post("https://api.instagram.com/oauth/access_token", data=parameter)
-	access_token = tokenData['access_token']
 	tokenData = json.loads(r.text)
+	access_token = tokenData['access_token']
 	metaForm = SendMetaForm()
 	metaForm.fields['metadata'].initial = '{"name":"' + username + '", "client_id": "' + my_client_id + '", "client_secret": "' + my_client_secret + '", "username": "' + username + '", "token": "' + tokenData['access_token'] + '"}'
 	metaForm.fields['name'].initial = name
