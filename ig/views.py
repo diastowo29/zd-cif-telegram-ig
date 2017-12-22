@@ -27,8 +27,8 @@ return_url = ''
 # my_redirect_url = 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/auth'
 my_redirect_url = 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/givetoken'
 
-my_client_id = 'e7571324f43d4de7a0a2ed23741c5dc9' #@trees_zd
-my_client_secret = 'de94bb10002343cf81aaddba094986dd' #@trees_zd
+my_client_id = 'efb368fd043148c0a0ca192aafbeb5d9' #@trees_zd
+my_client_secret = '1a6cd86f5ff34efcac208292116039bc' #@trees_zd
 access_token = '6681801146.935271d.0b8ba1e015024ec4b3e0759c8129abd6' #@trees_zd
 
 @csrf_exempt
