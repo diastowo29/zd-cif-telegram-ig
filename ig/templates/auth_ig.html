@@ -8,7 +8,22 @@
 <body>
 	<div class="container">
 	  <!-- <iframe src={{iframe_url}}></iframe> -->
-	  <iframe width="420" height="315" src={{iframe_url}} frameborder="0" allowfullscreen></iframe>
+	  <!-- <iframe width="420" height="315" src={{iframe_url}} frameborder="0" allowfullscreen></iframe> -->
+	  <!-- <a href="{{iframe_url}}"></a> -->
+	  <div class="col-md-12" style="margin-top: 20px;">
+	  	<a href="{{iframe_url}}" class="btn btn-info" role="button">Authorize me</a>
+	  </div>
+	  <div class="col-md-12" style="margin-top: 10px;">
+	  	<label>Click button above first to get the access token, and then put the code down below..</label>
+	  </div>
+	  <div class="col-md-12">
+	  	<form action="./auth/" method="POST">
+			<div class="form-group">
+				{{form}}
+			</div>
+			<button type="submit" class="btn btn-default">Authorize</button>
+		</form>
+	  </div>
 	</div>
 </body>
 </html>

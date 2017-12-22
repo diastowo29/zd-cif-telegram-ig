@@ -22,3 +22,10 @@ class GetTokenForm(forms.Form):
     grant_type = forms.CharField(label='Grant Type', widget=forms.TextInput(attrs={'class':'form-control'}))
     redirect_uri = forms.CharField(label='Redirect Url', widget=forms.TextInput(attrs={'class':'form-control'}))
     code = forms.CharField(label='Code', widget=forms.TextInput(attrs={'class':'form-control'}))
+
+class AccessTokenForm(forms.Form):
+    token = forms.CharField(label='Token', widget=forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Access Token'}))
+
+
+class GiveTokenForm(forms.Form):
+    token = forms.CharField(label='Token', widget=forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Access Token'}))

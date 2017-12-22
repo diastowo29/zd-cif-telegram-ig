@@ -13,6 +13,7 @@ from .form_ig import ContactForm
 from .form_ig import GetTokenForm
 from .form_ig import MetaContactForm
 from .form_ig import SendMetaForm
+from .form_ig import AccessTokenForm
 from django.shortcuts import redirect
 
 userSelf_url = 'https://api.instagram.com/v1/users/self/?access_token='
@@ -25,7 +26,8 @@ username = ''
 return_url = ''
 
 # my_redirect_url = 'http://localhost:5000/zendesk/instagram/auth'
-my_redirect_url = 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/auth'
+# my_redirect_url = 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/auth'
+my_redirect_url = 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/givetoken'
 
 my_client_id = 'e7571324f43d4de7a0a2ed23741c5dc9' #@trees_zd
 my_client_secret = 'de94bb10002343cf81aaddba094986dd' #@trees_zd
@@ -42,7 +44,6 @@ def admin(request):
 
 @csrf_exempt
 @xframe_options_exempt
-@xframe_options_sameorigin
 def doAuth(request):
 	# testing = ''
 	global username
@@ -65,8 +66,9 @@ def doAuth(request):
 		else:
 			print(form.errors)
 	iframe_url = 'https://api.instagram.com/oauth/authorize/?client_id=' + my_client_id + '&redirect_uri=' + my_redirect_url + '&response_type=code'
-	return redirect(iframe_url)
-	# return render(request, 'auth_ig.html', {'iframe_url': iframe_url})
+	tokenForm = AccessTokenForm()
+	# return redirect(iframe_url)
+	return render(request, 'auth_ig.html', {'iframe_url': iframe_url, 'form': tokenForm})
 	# return JsonResponse(testing)
 
 @csrf_exempt
@@ -74,12 +76,17 @@ def doAuth(request):
 def adminauth(request, code):
 	print('adminauth')
 	global access_token
+	code = ''
+	tokenForm = AccessTokenForm(request.POST)
+	if tokenForm.is_valid():
+		code = tokenForm.cleaned_data['token']
+
 	parameter = {
 			'client_id': my_client_id, 
 			'client_secret': my_client_secret, 
 			'grant_type': 'authorization_code', 
 			'redirect_uri': my_redirect_url, 
-			'code': request.GET.get('code')
+			'code': code
 			}
 	r = requests.post("https://api.instagram.com/oauth/access_token", data=parameter)
 	access_token = tokenData['access_token']
@@ -90,6 +97,13 @@ def adminauth(request, code):
 	metaForm.fields['return_url'].initial = return_url
 
 	return render(request, 'sendmeta_ig.html', {'form': metaForm, 'return_url': return_url})
+
+@csrf_exempt
+@xframe_options_exempt
+def givetoken(request):
+	code = request.GET.get('code')
+	return render(request, 'givetoken.html', {'givemetoken': code})
+
 
 def manifest(request):
 	tasks = {
