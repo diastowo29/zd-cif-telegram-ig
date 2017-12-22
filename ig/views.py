@@ -4,6 +4,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext
 from django.views.decorators.clickjacking import xframe_options_exempt
+from django.views.decorators.clickjacking import xframe_options_deny
+from django.views.decorators.clickjacking import xframe_options_sameorigin
 import requests
 import json
 from datetime import datetime
@@ -40,6 +42,7 @@ def admin(request):
 
 @csrf_exempt
 @xframe_options_exempt
+@xframe_options_sameorigin
 def doAuth(request):
 	# testing = ''
 	global username
@@ -61,7 +64,9 @@ def doAuth(request):
 			# }
 		else:
 			print(form.errors)
-	return redirect('https://api.instagram.com/oauth/authorize/?client_id=' + my_client_id + '&redirect_uri=' + my_redirect_url + '&response_type=code')
+	iframe_url = 'https://api.instagram.com/oauth/authorize/?client_id=' + my_client_id + '&redirect_uri=' + my_redirect_url + '&response_type=code'
+	return redirect(iframe_url)
+	# return render(request, 'auth_ig.html', {'iframe_url': iframe_url})
 	# return JsonResponse(testing)
 
 @csrf_exempt
@@ -172,5 +177,4 @@ def clickthrough(request):
 	else:
 		print('GET')
 		print(request.GET.get('fromuid'))
-		print('testing')
 	return JsonResponse({})
