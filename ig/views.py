@@ -100,7 +100,7 @@ def adminauth(request, code):
 
 @csrf_exempt
 @xframe_options_exempt
-def givetoken(request):
+def givetoken(request, code):
 	code = request.GET.get('code')
 	return render(request, 'givetoken.html', {'givemetoken': code})
 
