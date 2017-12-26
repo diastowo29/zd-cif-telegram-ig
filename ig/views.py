@@ -19,6 +19,8 @@ userRecentMedia_url = 'https://api.instagram.com/v1/users/self/media/recent/?acc
 userMediaComments_url = 'https://api.instagram.com/v1/media/'
 channelbackFlag = False
 
+herokuDomain = 'https://radiant-plains-54875.herokuapp.com/'
+
 name = ''
 username = ''
 return_url = ''
@@ -110,10 +112,10 @@ def manifest(request):
 	        'author': 'Diastowo Faryduana', 
 	        'version': 'v1.0',
 	        'urls': {
-	        	'admin_ui':'https://pure-crag-61212.herokuapp.com/zendesk/instagram/admin_ui/',
-	        	'pull_url': 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/pull/',
-	        	'channelback_url': 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/channelback/',
-	        	'clickthrough_url': 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/clickthrough/'
+	        	'admin_ui': herokuDomain + 'zendesk/instagram/admin_ui/',
+	        	'pull_url': herokuDomain + 'zendesk/instagram/pull/',
+	        	'channelback_url': herokuDomain + 'zendesk/instagram/channelback/',
+	        	'clickthrough_url': herokuDomain + 'zendesk/instagram/clickthrough/'
 	        }
 	    }
 	return JsonResponse(tasks)

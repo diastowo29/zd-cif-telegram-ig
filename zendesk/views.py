@@ -22,6 +22,7 @@ return_url = ''
 channelbackFlag = True
 ext_resource = []
 
+herokuDomain = 'https://radiant-plains-54875.herokuapp.com/'
 
 # api_id = 184365
 # api_hash = '640727dc57738548a9cbc23e5d8d1bbe'
@@ -185,10 +186,10 @@ def manifest(request):
 	        'author': 'Diastowo Faryduana', 
 	        'version': 'v1.0',
 	        'urls': {
-	        	'admin_ui':'https://pure-crag-61212.herokuapp.com/zendesk/telegram/admin_ui',
-	        	'pull_url': 'https://pure-crag-61212.herokuapp.com/zendesk/telegram/pull',
-	        	'channelback_url': 'https://pure-crag-61212.herokuapp.com/zendesk/telegram/channelback',
-	        	'clickthrough_url': 'https://pure-crag-61212.herokuapp.com/zendesk/telegram/clickthrough'
+	        	'admin_ui': herokuDomain + 'zendesk/telegram/admin_ui',
+	        	'pull_url': herokuDomain + 'zendesk/telegram/pull',
+	        	'channelback_url': herokuDomain + 'zendesk/telegram/channelback',
+	        	'clickthrough_url': herokuDomain + 'zendesk/telegram/clickthrough'
 	        }
 	    }
 	return JsonResponse(tasks)
