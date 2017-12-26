@@ -90,6 +90,7 @@ def adminauth(request):
 			}
 	r = requests.post("https://api.instagram.com/oauth/access_token", data=parameter)
 	tokenData = json.loads(r.text)
+	print(tokenData)
 	my_access_token = tokenData['access_token']
 	metaForm = SendMetaForm()
 	metaForm.fields['metadata'].initial = '{"name":"' + username + '", "client_id": "' + my_client_id + '", "client_secret": "' + my_client_secret + '", "username": "' + username + '", "token": "' + my_access_token + '"}'
