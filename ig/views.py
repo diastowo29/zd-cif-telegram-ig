@@ -53,6 +53,7 @@ def doAuth(request):
 	if request.method == 'POST':
 		form = ContactForm(request.POST)
 		if form.is_valid():
+			print('form valid')
 			username = form.cleaned_data['username']
 			name = form.cleaned_data['name']
 			my_client_id = form.cleaned_data['client_id']
