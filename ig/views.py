@@ -27,7 +27,7 @@ return_url = ''
 
 # my_redirect_url = 'http://localhost:5000/zendesk/instagram/auth'
 # my_redirect_url = 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/auth'
-my_redirect_url = 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/givetoken'
+my_redirect_url = herokuDomain + 'zendesk/instagram/givetoken'
 
 my_client_id = 'efb368fd043148c0a0ca192aafbeb5d9' #@trees_zd
 my_client_secret = '1a6cd86f5ff34efcac208292116039bc' #@trees_zd
