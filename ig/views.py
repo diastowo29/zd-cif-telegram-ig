@@ -31,7 +31,7 @@ my_redirect_url = herokuDomain + 'zendesk/instagram/givetoken'
 
 my_client_id = 'efb368fd043148c0a0ca192aafbeb5d9' #@trees_zd
 my_client_secret = '1a6cd86f5ff34efcac208292116039bc' #@trees_zd
-access_token = '6681801146.935271d.0b8ba1e015024ec4b3e0759c8129abd6' #@trees_zd
+my_access_token = '6681801146.935271d.0b8ba1e015024ec4b3e0759c8129abd6' #@trees_zd
 
 @csrf_exempt
 @xframe_options_exempt
@@ -75,7 +75,7 @@ def doAuth(request):
 @xframe_options_exempt
 def adminauth(request):
 	print('adminauth')
-	global access_token
+	global my_access_token
 	code = ''
 	tokenForm = AccessTokenForm(request.POST)
 	if tokenForm.is_valid():
@@ -90,10 +90,8 @@ def adminauth(request):
 			}
 	r = requests.post("https://api.instagram.com/oauth/access_token", data=parameter)
 	tokenData = json.loads(r.text)
-	access_token = tokenData['access_token']
-	print(access_token)
-	metaForm = SendMetaForm()
-	metaForm.fields['metadata'].initial = '{"name":"' + username + '", "client_id": "' + my_client_id + '", "client_secret": "' + my_client_secret + '", "username": "' + username + '", "token": "' + tokenData['access_token'] + '"}'
+	my_access_token = tokenData['access_token']
+	metaForm.fields['metadata'].initial = '{"name":"' + username + '", "client_id": "' + my_client_id + '", "client_secret": "' + my_client_secret + '", "username": "' + username + '", "token": "' + my_access_token + '"}'
 	metaForm.fields['name'].initial = name
 	metaForm.fields['return_url'].initial = return_url
 
