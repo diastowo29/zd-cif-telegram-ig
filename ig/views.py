@@ -204,14 +204,22 @@ def channelback(request):
 		message = request.POST.get('message', '')
 		parentId = request.POST.get('parent_id', '')
 		recipientId = request.POST.get('recipient_id', '')
+
 		metaJson = json.loads(metadata)
 		client_id = metaJson['client_id']
 		client_secret = metaJson['client_secret']
 		access_token = metaJson['token']
 		name = metaJson['name']
 
-		mediaId = parentId.split('-')
-		print(mediaId)
+		mediaIdSplit = parentId.split('-')
+		media_id = mediaIdSplit[2]
+		# postCommentUrl = userMediaComments_url + media_id + '/comments?access_token='
+		# postingComment = call_api(postCommentUrl, access_token)
+
+		api = InstagramAPI(access_token=access_token, client_secret=client_secret)
+		comment = api.create_media_comment(media_id, message)
+		print(comment)
+
 
 	return JsonResponse({})
 
