@@ -215,15 +215,19 @@ def channelback(request):
 
 		mediaIdSplit = parentId.split('-')
 		media_id = mediaIdSplit[2]
-		# postCommentUrl = userMediaComments_url + media_id + '/comments?access_token='
-		# postingComment = call_api(postCommentUrl, access_token)
 
 		api = InstagramAPI(access_token=access_token, client_secret=client_secret)
 		comment = api.create_media_comment(media_id, message)
-		print(comment)
+		mediaComments = api.media_comments(media_id)
+		commentId = ''
+		for mediaComment in mediaComments:
+			if mediaComment.text == message:
+				commentId = mediaComment.id
 
-
-	return JsonResponse({})
+	response_data = {}
+	response_data['external_id'] = commentId
+	response_data['allow_channelback'] = True
+	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json;charset=UTF-8")
 
 @csrf_exempt
 @xframe_options_exempt
