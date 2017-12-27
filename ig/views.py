@@ -128,6 +128,21 @@ def pull(request):
 	ext_resource = []
 	pull = {}
 
+	metadata = '';
+	newState = '';
+	if request.method == 'POST':
+		print('POST PULL')
+		metadata = request.POST.get('metadata', '')
+		newState = request.POST.get('state', '')
+	else:
+		print('NOT POST PULL')
+	
+	metaJson = json.loads(metadata)
+	client_id = metaJson['client_id']
+	client_secret = metaJson['client_secret']
+	access_token = metaJson['token']
+	name = metaJson['name']
+
 	response = call_api(userSelf_url, access_token)
 	if response.status_code == 200:
 		getUser = json.loads(response.text)
