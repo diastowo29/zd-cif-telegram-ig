@@ -210,7 +210,7 @@ def channelback(request):
 		access_token = metaJson['token']
 		name = metaJson['name']
 
-		mediaId = recipientId.split('-')
+		mediaId = parentId.split('-')
 		print(mediaId)
 
 	return JsonResponse({})
