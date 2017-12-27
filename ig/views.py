@@ -128,8 +128,8 @@ def pull(request):
 	ext_resource = []
 	pull = {}
 
-	metadata = '';
-	newState = '';
+	metadata = ''
+	newState = ''
 	if request.method == 'POST':
 		print('POST PULL')
 		metadata = request.POST.get('metadata', '')
@@ -209,6 +209,9 @@ def channelback(request):
 		client_secret = metaJson['client_secret']
 		access_token = metaJson['token']
 		name = metaJson['name']
+
+		mediaId = recipientId.split('-')
+		print(mediaId)
 
 	return JsonResponse({})
 
