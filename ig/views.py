@@ -17,7 +17,6 @@ from django.shortcuts import redirect
 userSelf_url = 'https://api.instagram.com/v1/users/self/?access_token='
 userRecentMedia_url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token='
 userMediaComments_url = 'https://api.instagram.com/v1/media/'
-channelbackFlag = False
 
 herokuDomain = 'https://radiant-plains-54875.herokuapp.com/'
 
@@ -125,6 +124,7 @@ def manifest(request):
 @csrf_exempt
 @xframe_options_exempt
 def pull(request):
+	channelbackFlag = True
 	ext_resource = []
 	pull = {}
 
@@ -172,7 +172,7 @@ def pull(request):
 					for comment in getComments['data']:
 						newCommentDate = datetime.fromtimestamp(int(comment['created_time'])).strftime('%Y-%m-%dT%H:%M:%SZ')
 						message = {
-						"external_id": "cmnt-" + comment['id'],
+						"external_id": "cmnt-" + comment['id'] + '-' + posting_id,
 						"parent_id": "post-" + posting_id,
 						"message": comment['text'],
 						"created_at": newCommentDate,
@@ -198,6 +198,17 @@ def handler500(request):
 @csrf_exempt
 @xframe_options_exempt
 def channelback(request):
+	if request.method == 'POST':
+		metadata = request.POST.get('metadata', '')
+		newState = request.POST.get('state', '')
+		message = request.POST.get('message', '')
+		parentId = request.POST.get('parent_id', '')
+		recipientId = request.POST.get('recipient_id', '')
+
+		print(parentId)
+		print(recipientId)
+		print(message)
+
 	return JsonResponse({})
 
 @csrf_exempt
