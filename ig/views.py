@@ -223,10 +223,11 @@ def channelback(request):
 		for mediaComment in mediaComments:
 			if mediaComment.text == message:
 				commentId = mediaComment.id
+				newCommentId = "cmnt-" + commentId + '-' + media_id,
+				print(newCommentId)
 
-	newCommentId = "cmnt-" + commentId + '-' + media_id,
 	response_data = {}
-	response_data['external_id'] = commentId
+	response_data['external_id'] = newCommentId
 	response_data['allow_channelback'] = True
 	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json;charset=UTF-8")
 
