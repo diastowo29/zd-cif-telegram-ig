@@ -178,7 +178,7 @@ def pull(request):
 						"created_at": newCommentDate,
 						'author': {
 							'external_id': 'ig-acc-' + comment['from']['id'],
-							'name': comment['from']['full_name'],
+							'name': comment['from']['username'],
 						},
 						'allow_channelback': channelbackFlag
 						}
@@ -204,10 +204,11 @@ def channelback(request):
 		message = request.POST.get('message', '')
 		parentId = request.POST.get('parent_id', '')
 		recipientId = request.POST.get('recipient_id', '')
-
-		print(parentId)
-		print(recipientId)
-		print(message)
+		metaJson = json.loads(metadata)
+		client_id = metaJson['client_id']
+		client_secret = metaJson['client_secret']
+		access_token = metaJson['token']
+		name = metaJson['name']
 
 	return JsonResponse({})
 
