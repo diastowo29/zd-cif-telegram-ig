@@ -156,7 +156,7 @@ def pull(request):
 				commentUrl = userMediaComments_url + posting_id + '/comments?access_token='
 				message = ''
 				message = {
-					"external_id": posting_id,
+					"external_id": "post-" + posting_id,
 					"message": media['caption']['text'],
 					"created_at": newDate,
 					'author': {
@@ -172,8 +172,8 @@ def pull(request):
 					for comment in getComments['data']:
 						newCommentDate = datetime.fromtimestamp(int(comment['created_time'])).strftime('%Y-%m-%dT%H:%M:%SZ')
 						message = {
-						"external_id": comment['id'],
-						"parent_id": posting_id,
+						"external_id": "cmnt-" + comment['id'],
+						"parent_id": "post-" + posting_id,
 						"message": comment['text'],
 						"created_at": newCommentDate,
 						'author': {
