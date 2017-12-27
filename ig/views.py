@@ -224,6 +224,7 @@ def channelback(request):
 			if mediaComment.text == message:
 				commentId = mediaComment.id
 
+	newCommentId = "cmnt-" + commentId + '-' + media_id,
 	response_data = {}
 	response_data['external_id'] = commentId
 	response_data['allow_channelback'] = True
