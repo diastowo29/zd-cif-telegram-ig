@@ -223,7 +223,7 @@ def channelback(request):
 		for mediaComment in mediaComments:
 			if mediaComment.text == message:
 				commentId = mediaComment.id
-				newCommentId = "cmnt-" + commentId + '-' + media_id,
+				newCommentId = "cmnt-" + commentId + '-' + media_id
 				print(newCommentId)
 
 	response_data = {}
