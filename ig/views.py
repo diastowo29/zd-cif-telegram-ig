@@ -13,6 +13,7 @@ from .form_ig import MetaContactForm
 from .form_ig import SendMetaForm
 from .form_ig import AccessTokenForm
 from django.shortcuts import redirect
+from instagram.client import InstagramAPI
 
 userSelf_url = 'https://api.instagram.com/v1/users/self/?access_token='
 userRecentMedia_url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token='
