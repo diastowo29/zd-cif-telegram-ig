@@ -36,5 +36,3 @@ urlpatterns = [
     url(r'^zendesk/instagram/clickthrough/$', ig.views.clickthrough, name='cif_ig_clickthrough'),
     url(r'^zendesk/instagram/doAuth$', ig.views.doAuth, name='cif_ig_auth'),
 ]
-
-handler500 = ig.views.handler500
