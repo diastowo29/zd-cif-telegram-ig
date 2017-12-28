@@ -29,9 +29,9 @@ return_url = ''
 # my_redirect_url = 'https://pure-crag-61212.herokuapp.com/zendesk/instagram/auth'
 my_redirect_url = herokuDomain + 'zendesk/instagram/givetoken'
 
-my_client_id = 'efb368fd043148c0a0ca192aafbeb5d9' #@trees_zd
-my_client_secret = '1a6cd86f5ff34efcac208292116039bc' #@trees_zd
-my_access_token = '6681801146.935271d.0b8ba1e015024ec4b3e0759c8129abd6' #@trees_zd
+my_client_id = ''
+my_client_secret = ''
+my_access_token = ''
 
 @csrf_exempt
 @xframe_options_exempt
@@ -58,20 +58,11 @@ def doAuth(request):
 			name = form.cleaned_data['name']
 			my_client_id = form.cleaned_data['client_id']
 			my_client_secret = form.cleaned_data['client_secret']
-			# testing = {
-			# 	'name': name,
-			# 	'username': username,
-			# 	'client_id': my_client_id,
-			# 	'client_secret' : my_client_secret
-			# }
-			# test
 		else:
 			print(form.errors)
 	iframe_url = 'https://api.instagram.com/oauth/authorize/?client_id=' + my_client_id + '&redirect_uri=' + my_redirect_url + '&response_type=code&scope=comments+public_content'
 	tokenForm = AccessTokenForm()
-	# return redirect(iframe_url)
 	return render(request, 'auth_ig.html', {'iframe_url': iframe_url, 'form': tokenForm})
-	# return JsonResponse(testing)
 
 @csrf_exempt
 @xframe_options_exempt
@@ -82,6 +73,9 @@ def adminauth(request):
 	tokenForm = AccessTokenForm(request.POST)
 	if tokenForm.is_valid():
 		code = tokenForm.cleaned_data['token']
+
+	print(my_client_id)
+	print(my_client_secret)
 
 	parameter = {
 			'client_id': my_client_id, 
