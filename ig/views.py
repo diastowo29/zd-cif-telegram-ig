@@ -58,11 +58,11 @@ def doAuth(request):
 			name = form.cleaned_data['name']
 			my_client_id = form.cleaned_data['client_id']
 			my_client_secret = form.cleaned_data['client_secret']
-		else:
-			print(form.errors)
-	iframe_url = 'https://api.instagram.com/oauth/authorize/?client_id=' + my_client_id + '&redirect_uri=' + my_redirect_url + '&response_type=code&scope=comments+public_content'
-	tokenForm = AccessTokenForm()
-	return render(request, 'auth_ig.html', {'iframe_url': iframe_url, 'form': tokenForm})
+			iframe_url = 'https://api.instagram.com/oauth/authorize/?client_id=' + my_client_id + '&redirect_uri=' + my_redirect_url + '&response_type=code&scope=comments+public_content'
+			tokenForm = AccessTokenForm()
+			return render(request, 'auth_ig.html', {'iframe_url': iframe_url, 'form': tokenForm})
+		# else:
+		# 	print(form.errors)
 
 @csrf_exempt
 @xframe_options_exempt
